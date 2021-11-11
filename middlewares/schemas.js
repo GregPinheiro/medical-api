@@ -32,9 +32,23 @@ const conveniosSchema = Joi.object().keys({
   acomodacao: Joi.string(),
 });
 
+const fornecedoresSchema = Joi.object().keys({
+  nome: Joi.string().min(5).required(),
+  CNPJ: Joi.string(),
+  endereco: Joi.string(),
+  cidade: Joi.string(),
+  UF: Joi.string(),
+  CEP: Joi.string(),
+  representante: Joi.string(),
+  telefone: Joi.string(),
+  email: Joi.string(),
+  celular: Joi.string(),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
   cirurgiasSchema,
   conveniosSchema,
+  fornecedoresSchema,
 };

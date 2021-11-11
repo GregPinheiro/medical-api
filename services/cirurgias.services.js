@@ -31,7 +31,7 @@ const cirurgiasServices = {
     try {
       const response = await Cirurgias.findAll();
 
-      if (response) {
+      if (response.length > 0) {
         status = 200;
         data = response;
       } else {

@@ -1,13 +1,13 @@
-const { Convenios } = require("../models");
+const { Forncedores } = require("../models");
 
-const ConveniosServices = {
+const ForncedoresServices = {
   findOne: async (id) => {
     let status = null;
     let error = null;
     let data = {};
 
     try {
-      const response = await Convenios.findOne({ where: { id } });
+      const response = await Forncedores.findOne({ where: { id } });
 
       if (response) {
         status = 200;
@@ -29,7 +29,7 @@ const ConveniosServices = {
     let data = {};
 
     try {
-      const response = await Convenios.findAll();
+      const response = await Forncedores.findAll();
 
       if (response.length > 0) {
         status = 200;
@@ -51,7 +51,7 @@ const ConveniosServices = {
     let data = {};
 
     try {
-      const response = await Convenios.create(datas);
+      const response = await Forncedores.create(datas);
 
       status = 201;
       data = response;
@@ -68,7 +68,7 @@ const ConveniosServices = {
     let data = {};
 
     try {
-      const response = await Convenios.update(datas, { where: { id } });
+      const response = await Forncedores.update(datas, { where: { id } });
 
       if (response == 1) {
         status = 202;
@@ -90,7 +90,7 @@ const ConveniosServices = {
     let data = {};
 
     try {
-      const response = await Convenios.destroy({ where: { id } });
+      const response = await Forncedores.destroy({ where: { id } });
 
       if (response == 1) {
         status = 202;
@@ -108,4 +108,4 @@ const ConveniosServices = {
   },
 };
 
-module.exports = ConveniosServices;
+module.exports = ForncedoresServices;

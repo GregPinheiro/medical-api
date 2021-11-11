@@ -11,6 +11,5 @@ router.post("/signin", middleware(signinSchema), userController.signin);
 router.get("/", (req, res) => res.status(200).json("ok"));
 router.post("/", middleware(postUserSchema), userController.post);
 router.put("/");
-router.put("/");
 
 module.exports = router;

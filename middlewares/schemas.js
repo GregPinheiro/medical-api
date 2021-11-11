@@ -10,4 +10,16 @@ const signinSchema = Joi.object().keys({
   password: Joi.string().min(6).required(),
 });
 
-module.exports = { signinSchema, postUserSchema };
+const cirurgiasSchema = Joi.object().keys({
+  nome: Joi.string().min(5).required(),
+  CID: Joi.string(),
+  justificativa: Joi.string(),
+  TUSS: Joi.string(),
+  materiais: Joi.string(),
+});
+
+module.exports = {
+  signinSchema,
+  postUserSchema,
+  cirurgiasSchema,
+};

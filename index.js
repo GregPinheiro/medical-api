@@ -3,6 +3,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 const userRoutes = require("./routes/user.routes");
+const cirurgiasRoutes = require("./routes/cirurgias.routes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/cirurgias", cirurgiasRoutes);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running on port ${process.env.PORT}`)

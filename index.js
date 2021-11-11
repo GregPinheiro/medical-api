@@ -5,7 +5,7 @@ const session = require("express-session");
 const userRoutes = require("./routes/user.routes");
 const cirurgiasRoutes = require("./routes/cirurgias.routes");
 const conveniosRoutes = require("./routes/convenios.routes");
-const fornecedoresRoutes = require("./routes/forncedores.routes");
+const fornecedoresRoutes = require("./routes/fornecedores.routes");
 
 const app = express();
 

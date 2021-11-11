@@ -5,6 +5,7 @@ const session = require("express-session");
 const userRoutes = require("./routes/user.routes");
 const cirurgiasRoutes = require("./routes/cirurgias.routes");
 const conveniosRoutes = require("./routes/convenios.routes");
+const fornecedoresRoutes = require("./routes/forncedores.routes");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(cors());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/cirurgias", cirurgiasRoutes);
 app.use("/api/v1/convenios", conveniosRoutes);
+app.use("/api/v1/fornecedores", fornecedoresRoutes);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running on port ${process.env.PORT}`)

@@ -1,3 +1,4 @@
+const { string } = require("joi");
 const Joi = require("joi");
 
 const postUserSchema = Joi.object().keys({
@@ -18,8 +19,22 @@ const cirurgiasSchema = Joi.object().keys({
   materiais: Joi.string(),
 });
 
+const conveniosSchema = Joi.object().keys({
+  nome: Joi.string().min(5).required(),
+  endereco: Joi.string(),
+  cidade: Joi.string(),
+  UF: Joi.string(),
+  CEP: Joi.string(),
+  telefone: Joi.string(),
+  email: Joi.string(),
+  celular: Joi.string(),
+  plano: Joi.string(),
+  acomodacao: Joi.string(),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
   cirurgiasSchema,
+  conveniosSchema,
 };

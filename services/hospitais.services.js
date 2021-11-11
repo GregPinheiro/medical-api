@@ -1,13 +1,13 @@
-const { Fornecedores } = require("../models");
+const { Hospitais } = require("../models");
 
-const FornecedoresServices = {
+const HospitaisServices = {
   findOne: async (id) => {
     let status = null;
     let error = null;
     let data = {};
 
     try {
-      const response = await Fornecedores.findOne({ where: { id } });
+      const response = await Hospitais.findOne({ where: { id } });
 
       if (response) {
         status = 200;
@@ -29,7 +29,7 @@ const FornecedoresServices = {
     let data = {};
 
     try {
-      const response = await Fornecedores.findAll();
+      const response = await Hospitais.findAll();
 
       if (response.length > 0) {
         status = 200;
@@ -51,7 +51,7 @@ const FornecedoresServices = {
     let data = {};
 
     try {
-      const response = await Fornecedores.create(datas);
+      const response = await Hospitais.create(datas);
 
       status = 201;
       data = response;
@@ -68,7 +68,7 @@ const FornecedoresServices = {
     let data = {};
 
     try {
-      const response = await Fornecedores.update(datas, { where: { id } });
+      const response = await Hospitais.update(datas, { where: { id } });
 
       if (response == 1) {
         status = 202;
@@ -90,7 +90,7 @@ const FornecedoresServices = {
     let data = {};
 
     try {
-      const response = await Fornecedores.destroy({ where: { id } });
+      const response = await Hospitais.destroy({ where: { id } });
 
       if (response == 1) {
         status = 202;
@@ -108,4 +108,4 @@ const FornecedoresServices = {
   },
 };
 
-module.exports = FornecedoresServices;
+module.exports = HospitaisServices;

@@ -67,6 +67,20 @@ const hospitaisSchema = Joi.object().keys({
   email4: Joi.string(),
 });
 
+const medicosSchema = Joi.object().keys({
+  nome: Joi.string().min(5).required(),
+  especialidade: Joi.string(),
+  CRO_CRM: Joi.string(),
+  endereco: Joi.string(),
+  cidade: Joi.string(),
+  UF: Joi.string(),
+  CEP: Joi.string(),
+  telefone: Joi.string(),
+  celular: Joi.string(),
+  email: Joi.string(),
+  secretaria: Joi.string(),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
@@ -74,4 +88,5 @@ module.exports = {
   conveniosSchema,
   fornecedoresSchema,
   hospitaisSchema,
+  medicosSchema,
 };

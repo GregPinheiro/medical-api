@@ -81,6 +81,23 @@ const medicosSchema = Joi.object().keys({
   secretaria: Joi.string(),
 });
 
+const pacientesSchema = Joi.object().keys({
+  nome: Joi.string().min(5).required(),
+  CPF: Joi.string(),
+  dataNasc: Joi.string(),
+  endereco: Joi.string(),
+  cidade: Joi.string(),
+  UF: Joi.string(),
+  CEP: Joi.string(),
+  telefone: Joi.string(),
+  celular: Joi.string(),
+  noCarteirinha: Joi.string(),
+  dataInclusao: Joi.date(),
+  validade: Joi.date(),
+  login: Joi.string(),
+  senha: Joi.string(),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
@@ -89,4 +106,5 @@ module.exports = {
   fornecedoresSchema,
   hospitaisSchema,
   medicosSchema,
+  pacientesSchema,
 };

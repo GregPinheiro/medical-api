@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     dataNasc: DataTypes.DATE,
     endereco: DataTypes.STRING,
     cidade: DataTypes.STRING,
-    uf: DataTypes.STRING,
+    UF: DataTypes.STRING,
     CEP: DataTypes.STRING,
     telefone: DataTypes.STRING,
     celular: DataTypes.STRING,

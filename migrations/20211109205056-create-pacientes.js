@@ -24,7 +24,7 @@ module.exports = {
       cidade: {
         type: Sequelize.STRING
       },
-      uf: {
+      UF: {
         type: Sequelize.STRING
       },
       CEP: {

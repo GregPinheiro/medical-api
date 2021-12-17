@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     CEP: DataTypes.STRING,
     telefone: DataTypes.STRING,
     celular: DataTypes.STRING,
+    email: DataTypes.STRING,
     noCarteirinha: DataTypes.STRING,
     dataInclusao: DataTypes.DATE,
     validade: DataTypes.DATE,

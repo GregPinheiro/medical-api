@@ -1,4 +1,4 @@
-const HospitaisServices = require("../services/fornecedores.services");
+const HospitaisServices = require("../services/hospitais.services");
 
 const hospitaisController = {
   findOne: async (req, res) => {

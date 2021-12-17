@@ -36,6 +36,9 @@ module.exports = {
       celular: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       noCarteirinha: {
         type: Sequelize.STRING
       },

@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "yarn install && npx sequelize db:migrate && node index.js"
+    "start": "yarn && npx sequelize db:migrate && node index.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

@@ -1,4 +1,3 @@
-const { string } = require("joi");
 const Joi = require("joi");
 
 const postUserSchema = Joi.object().keys({
@@ -17,6 +16,7 @@ const cirurgiasSchema = Joi.object().keys({
   justificativa: Joi.string().allow(null, ""),
   TUSS: Joi.string().allow(null, ""),
   materiais: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 const conveniosSchema = Joi.object().keys({
@@ -30,6 +30,7 @@ const conveniosSchema = Joi.object().keys({
   celular: Joi.string().allow(null, ""),
   plano: Joi.string().allow(null, ""),
   acomodacao: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 const fornecedoresSchema = Joi.object().keys({
@@ -43,6 +44,7 @@ const fornecedoresSchema = Joi.object().keys({
   telefone: Joi.string().allow(null, ""),
   email: Joi.string().allow(null, ""),
   celular: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 const hospitaisSchema = Joi.object().keys({
@@ -65,6 +67,7 @@ const hospitaisSchema = Joi.object().keys({
   email2: Joi.string().allow(null, ""),
   email3: Joi.string().allow(null, ""),
   email4: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 const medicosSchema = Joi.object().keys({
@@ -79,6 +82,7 @@ const medicosSchema = Joi.object().keys({
   celular: Joi.string().allow(null, ""),
   email: Joi.string().allow(null, ""),
   secretaria: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 const pacientesSchema = Joi.object().keys({
@@ -97,6 +101,7 @@ const pacientesSchema = Joi.object().keys({
   validade: Joi.date(),
   login: Joi.string().allow(null, ""),
   senha: Joi.string().allow(null, ""),
+  observation: Joi.string().allow(null, ""),
 });
 
 module.exports = {

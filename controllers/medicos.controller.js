@@ -35,6 +35,17 @@ const medicosController = {
 
     res.status(status).json(error ? error : data);
   },
+  setHospitais: async (req, res) => {
+    const { id } = req.params;
+    const { hospitalId } = req.body;
+
+    const { data, status, error } = await MedicosServices.setHospitais(
+      id,
+      hospitalId
+    );
+
+    res.status(status).json(error ? error : data);
+  },
 };
 
 module.exports = medicosController;

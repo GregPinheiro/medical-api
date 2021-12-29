@@ -1,4 +1,4 @@
-const { Medicos } = require("../models");
+const { Medicos, Hospitais, MedicoHospitais } = require("../models");
 
 const MedicosServices = {
   findOne: async (id) => {
@@ -7,7 +7,10 @@ const MedicosServices = {
     let data = {};
 
     try {
-      const response = await Medicos.findOne({ where: { id } });
+      const response = await Medicos.findOne({
+        where: { id },
+        include: [Hospitais],
+      });
 
       if (response) {
         status = 200;
@@ -99,6 +102,33 @@ const MedicosServices = {
         status = 404;
         data = "item não encontrados";
       }
+    } catch (e) {
+      status = 500;
+      error = e;
+    }
+
+    return { data, status, error };
+  },
+  setHospitais: async (medicoId, datas) => {
+    let status = null;
+    let error = null;
+    let data = [];
+
+    try {
+      for (const item in datas) {
+        data = [
+          ...data,
+          { medicoId: Number(medicoId), hospitalId: datas[item] },
+        ];
+      }
+
+      await MedicoHospitais.destroy({
+        where: { medicoId },
+      });
+
+      await MedicoHospitais.bulkCreate(data);
+
+      status = 201;
     } catch (e) {
       status = 500;
       error = e;

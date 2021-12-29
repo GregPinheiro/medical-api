@@ -11,5 +11,6 @@ router.get("/:id", medicosController.findOne);
 router.post("/", middleware(medicosSchema), medicosController.create);
 router.put("/:id", middleware(medicosSchema), medicosController.update);
 router.delete("/:id", medicosController.delete);
+router.post("/hospitais/:id", medicosController.setHospitais);
 
 module.exports = router;

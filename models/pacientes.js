@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Pacientes extends Model {
     /**
@@ -12,29 +10,33 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  Pacientes.init({
-    nome: {
-      allowNull: false,
-      type: DataTypes.STRING
+  }
+  Pacientes.init(
+    {
+      nome: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      CPF: DataTypes.STRING,
+      dataNasc: DataTypes.DATE,
+      endereco: DataTypes.STRING,
+      cidade: DataTypes.STRING,
+      UF: DataTypes.STRING,
+      CEP: DataTypes.STRING,
+      telefone: DataTypes.STRING,
+      celular: DataTypes.STRING,
+      email: DataTypes.STRING,
+      noCarteirinha: DataTypes.STRING,
+      dataInclusao: DataTypes.DATE,
+      validade: DataTypes.DATE,
+      login: DataTypes.STRING,
+      senha: DataTypes.STRING,
+      observation: DataTypes.STRING,
     },
-    CPF: DataTypes.STRING,
-    dataNasc: DataTypes.DATE,
-    endereco: DataTypes.STRING,
-    cidade: DataTypes.STRING,
-    UF: DataTypes.STRING,
-    CEP: DataTypes.STRING,
-    telefone: DataTypes.STRING,
-    celular: DataTypes.STRING,
-    email: DataTypes.STRING,
-    noCarteirinha: DataTypes.STRING,
-    dataInclusao: DataTypes.DATE,
-    validade: DataTypes.DATE,
-    login: DataTypes.STRING,
-    senha: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Pacientes',
-  });
+    {
+      sequelize,
+      modelName: "Pacientes",
+    }
+  );
   return Pacientes;
 };

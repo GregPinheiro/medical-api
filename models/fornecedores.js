@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       telefone: DataTypes.STRING,
       email: DataTypes.STRING,
       celular: DataTypes.STRING,
+      observation: DataTypes.STRING,
     },
     {
       sequelize,

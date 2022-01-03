@@ -1,4 +1,4 @@
-const { Convenios } = require("../models");
+const { Convenios, Hospitais, HospitalConvenios } = require("../models");
 
 const ConveniosServices = {
   findOne: async (id) => {
@@ -7,7 +7,10 @@ const ConveniosServices = {
     let data = {};
 
     try {
-      const response = await Convenios.findOne({ where: { id } });
+      const response = await Convenios.findOne({
+        where: { id },
+        include: [Hospitais],
+      });
 
       if (response) {
         status = 200;
@@ -105,6 +108,33 @@ const ConveniosServices = {
     }
 
     return { data, status, error };
+  },
+  setHospitais: async (convenioId, datas) => {
+    let status = null;
+    let error = null;
+    let data = [];
+
+    try {
+      for (const item in datas) {
+        data = [
+          ...data,
+          { convenioId: Number(convenioId), hospitalId: Number(datas[item]) },
+        ];
+      }
+
+      await HospitalConvenios.destroy({
+        where: { convenioId },
+      });
+
+      await HospitalConvenios.bulkCreate(data);
+
+      status = 201;
+    } catch (e) {
+      status = 500;
+      error = e;
+    } finally {
+      return { data, status, error };
+    }
   },
 };
 

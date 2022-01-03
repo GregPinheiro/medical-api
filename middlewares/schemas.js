@@ -70,6 +70,14 @@ const hospitaisSchema = Joi.object().keys({
   observation: Joi.string().allow(null, ""),
 });
 
+const hospitalConvenios = Joi.object().keys({
+  convenioId: Joi.array().items(Joi.number()).required(),
+});
+
+const convenioHospitais = Joi.object().keys({
+  hospitalId: Joi.array().items(Joi.number()).required(),
+});
+
 const medicosSchema = Joi.object().keys({
   nome: Joi.string().min(5).required(),
   especialidade: Joi.string().allow(null, ""),
@@ -83,6 +91,10 @@ const medicosSchema = Joi.object().keys({
   email: Joi.string().allow(null, ""),
   secretaria: Joi.string().allow(null, ""),
   observation: Joi.string().allow(null, ""),
+});
+
+const medicoHospitais = Joi.object().keys({
+  hospitalId: Joi.array().items(Joi.number()).required(),
 });
 
 const pacientesSchema = Joi.object().keys({
@@ -113,4 +125,7 @@ module.exports = {
   hospitaisSchema,
   medicosSchema,
   pacientesSchema,
+  hospitalConvenios,
+  medicoHospitais,
+  convenioHospitais,
 };

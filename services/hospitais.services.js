@@ -1,4 +1,4 @@
-const { Hospitais } = require("../models");
+const { Hospitais, Convenios, HospitalConvenios } = require("../models");
 
 const HospitaisServices = {
   findOne: async (id) => {
@@ -7,13 +7,16 @@ const HospitaisServices = {
     let data = {};
 
     try {
-      const response = await Hospitais.findOne({ where: { id } });
+      const response = await Hospitais.findOne({
+        where: { id },
+        include: [Convenios],
+      });
 
       if (response) {
         status = 200;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Item não encontrado";
       }
     } catch (e) {
@@ -35,7 +38,7 @@ const HospitaisServices = {
         status = 200;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Itens não encontrados";
       }
     } catch (e) {
@@ -74,7 +77,7 @@ const HospitaisServices = {
         status = 202;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Item não encontrado";
       }
     } catch (e) {
@@ -96,7 +99,7 @@ const HospitaisServices = {
         status = 202;
         data = "Item deletado com sucesso";
       } else {
-        status = 404;
+        status = 204;
         data = "item não encontrados";
       }
     } catch (e) {
@@ -105,6 +108,33 @@ const HospitaisServices = {
     }
 
     return { data, status, error };
+  },
+  setConvenios: async (hospitalId, datas) => {
+    let status = null;
+    let error = null;
+    let data = [];
+
+    try {
+      for (const item in datas) {
+        data = [
+          ...data,
+          { hospitalId: Number(hospitalId), convenioId: Number(datas[item]) },
+        ];
+      }
+
+      await HospitalConvenios.destroy({
+        where: { hospitalId },
+      });
+
+      await HospitalConvenios.bulkCreate(data);
+
+      status = 201;
+    } catch (e) {
+      status = 500;
+      error = e;
+    } finally {
+      return { data, status, error };
+    }
   },
 };
 

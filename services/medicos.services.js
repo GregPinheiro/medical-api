@@ -9,7 +9,12 @@ const MedicosServices = {
     try {
       const response = await Medicos.findOne({
         where: { id },
-        include: [Hospitais],
+        include: [
+          {
+            model: Hospitais,
+            through: { model: MedicoHospitais },
+          },
+        ],
       });
 
       if (response) {
@@ -38,7 +43,7 @@ const MedicosServices = {
         status = 200;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Itens não encontrados";
       }
     } catch (e) {
@@ -77,7 +82,7 @@ const MedicosServices = {
         status = 202;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Item não encontrado";
       }
     } catch (e) {
@@ -99,7 +104,7 @@ const MedicosServices = {
         status = 202;
         data = "Item deletado com sucesso";
       } else {
-        status = 404;
+        status = 204;
         data = "item não encontrados";
       }
     } catch (e) {
@@ -118,10 +123,10 @@ const MedicosServices = {
       for (const item in datas) {
         data = [
           ...data,
-          { medicoId: Number(medicoId), hospitalId: datas[item] },
+          { medicoId: Number(medicoId), hospitalId: Number(datas[item]) },
         ];
       }
-
+      console.log(data);
       await MedicoHospitais.destroy({
         where: { medicoId },
       });

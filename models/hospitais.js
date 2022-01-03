@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         through: models.MedicoHospitais,
         foreignKey: "hospitalId",
       });
+      Hospitais.belongsToMany(models.Convenios, {
+        through: models.HospitalConvenios,
+        foreignKey: "hospitalId",
+      });
     }
   }
   Hospitais.init(

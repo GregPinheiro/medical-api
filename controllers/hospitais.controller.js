@@ -35,6 +35,17 @@ const hospitaisController = {
 
     res.status(status).json(error ? error : data);
   },
+  setConvenios: async (req, res) => {
+    const { id } = req.params;
+    const { convenioId } = req.body;
+
+    const { data, status, error } = await HospitaisServices.setConvenios(
+      id,
+      convenioId
+    );
+
+    res.status(status).json(error ? error : data);
+  },
 };
 
 module.exports = hospitaisController;

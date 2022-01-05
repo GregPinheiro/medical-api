@@ -1,4 +1,10 @@
-const { Pacientes } = require("../models");
+const {
+  Pacientes,
+  Medicos,
+  Hospitais,
+  MedicoHospitais,
+  Convenios,
+} = require("../models");
 
 const PacientesServices = {
   findOne: async (id) => {
@@ -7,7 +13,36 @@ const PacientesServices = {
     let data = {};
 
     try {
-      const response = await Pacientes.findOne({ where: { id } });
+      const response = await Pacientes.findOne({
+        where: { id },
+        include: [
+          {
+            model: Medicos,
+            as: "medico",
+            attributes: ["id", "nome", "especialidade", "CRO_CRM"],
+            include: [
+              {
+                as: "hospitais",
+                model: Hospitais,
+                through: { model: MedicoHospitais },
+                attributes: ["id", "nome", "unidade", "CNPJ"],
+              },
+            ],
+          },
+          {
+            model: Convenios,
+            as: "convenio",
+            attributes: ["id", "nome", "plano", "acomodacao"],
+            include: [
+              {
+                as: "hospitais",
+                model: Hospitais,
+                attributes: ["id", "nome", "unidade", "CNPJ"],
+              },
+            ],
+          },
+        ],
+      });
 
       if (response) {
         status = 200;
@@ -32,7 +67,7 @@ const PacientesServices = {
       const response = await Pacientes.findAll();
 
       if (response.length > 0) {
-        const datas = response.map(item => {
+        const datas = response.map((item) => {
           return {
             id: item.id,
             nome: item.nome,
@@ -41,8 +76,8 @@ const PacientesServices = {
             email: item.email,
             telefone: item.telefone,
             celular: item.celular,
-          }
-        })
+          };
+        });
         status = 200;
         data = datas;
       } else {

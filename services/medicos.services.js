@@ -11,8 +11,10 @@ const MedicosServices = {
         where: { id },
         include: [
           {
+            as: "hospitais",
             model: Hospitais,
             through: { model: MedicoHospitais },
+            attributes: ["id", "nome", "unidade", "CNPJ"],
           },
         ],
       });
@@ -126,7 +128,7 @@ const MedicosServices = {
           { medicoId: Number(medicoId), hospitalId: Number(datas[item]) },
         ];
       }
-      console.log(data);
+
       await MedicoHospitais.destroy({
         where: { medicoId },
       });

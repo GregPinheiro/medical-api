@@ -17,6 +17,7 @@ const cirurgiasSchema = Joi.object().keys({
   TUSS: Joi.string().allow(null, ""),
   materiais: Joi.string().allow(null, ""),
   observation: Joi.string().allow(null, ""),
+  fornecedorId: Joi.number().allow(null),
 });
 
 const conveniosSchema = Joi.object().keys({
@@ -114,6 +115,8 @@ const pacientesSchema = Joi.object().keys({
   login: Joi.string().allow(null, ""),
   senha: Joi.string().allow(null, ""),
   observation: Joi.string().allow(null, ""),
+  convenioId: Joi.number().allow(null),
+  medicoId: Joi.number().allow(null),
 });
 
 module.exports = {

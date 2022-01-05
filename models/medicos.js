@@ -1,4 +1,5 @@
 "use strict";
+const { required } = require("joi");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Medicos extends Model {
@@ -9,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Medicos.belongsToMany(models.Hospitais, {
+        as: "hospitais",
         through: models.MedicoHospitais,
+        foreignKey: "medicoId",
+      });
+      Medicos.hasMany(models.Pacientes, {
         foreignKey: "medicoId",
       });
     }

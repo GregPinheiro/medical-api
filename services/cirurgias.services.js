@@ -1,4 +1,4 @@
-const { Cirurgias } = require("../models");
+const { Cirurgias, Fornecedores } = require("../models");
 
 const cirurgiasServices = {
   findOne: async (id) => {
@@ -7,7 +7,16 @@ const cirurgiasServices = {
     let data = {};
 
     try {
-      const response = await Cirurgias.findOne({ where: { id } });
+      const response = await Cirurgias.findOne({
+        where: { id },
+        include: [
+          {
+            as: "fornecedor",
+            model: Fornecedores,
+            attributes: ["id", "nome", "CNPJ"],
+          },
+        ],
+      });
 
       if (response) {
         status = 200;

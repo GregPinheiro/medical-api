@@ -9,7 +9,13 @@ const HospitaisServices = {
     try {
       const response = await Hospitais.findOne({
         where: { id },
-        include: [Convenios],
+        include: [
+          {
+            as: "convenios",
+            model: Convenios,
+            attributes: ["id", "nome", "plano", "acomodacao"],
+          },
+        ],
       });
 
       if (response) {

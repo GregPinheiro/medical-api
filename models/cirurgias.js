@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Cirurgias.belongsTo(models.Fornecedores, {
+        as: "fornecedor",
+        foreignKey: "fornecedorId",
+      });
     }
   }
   Cirurgias.init(
@@ -19,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       TUSS: DataTypes.STRING,
       materiais: DataTypes.STRING,
       observation: DataTypes.STRING,
+      fornecedorId: DataTypes.INTEGER,
     },
     {
       sequelize,

@@ -66,24 +66,8 @@ const PacientesServices = {
     try {
       const response = await Pacientes.findAll();
 
-      if (response.length > 0) {
-        const datas = response.map((item) => {
-          return {
-            id: item.id,
-            nome: item.nome,
-            CPF: item.CPF,
-            dataNasc: new Date(item.dataNasc).toDateString(),
-            email: item.email,
-            telefone: item.telefone,
-            celular: item.celular,
-          };
-        });
-        status = 200;
-        data = datas;
-      } else {
-        status = 404;
-        data = "Itens não encontrados";
-      }
+      status = response ? 200 : 204;
+      data = response ? response : "Itens nao encontrados";
     } catch (e) {
       status = 500;
       error = e;

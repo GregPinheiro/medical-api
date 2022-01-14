@@ -22,7 +22,7 @@ const cirurgiasServices = {
         status = 200;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Cirurgia não encontrada";
       }
     } catch (e) {
@@ -44,7 +44,7 @@ const cirurgiasServices = {
         status = 200;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Nenhuma cirurgia encontrada";
       }
     } catch (e) {
@@ -83,7 +83,7 @@ const cirurgiasServices = {
         status = 202;
         data = response;
       } else {
-        status = 404;
+        status = 204;
         data = "Item não encontrado";
       }
     } catch (e) {
@@ -105,7 +105,7 @@ const cirurgiasServices = {
         status = 202;
         data = "Item deletado com sucesso";
       } else {
-        status = 404;
+        status = 204;
         data = "item não encontrados";
       }
     } catch (e) {

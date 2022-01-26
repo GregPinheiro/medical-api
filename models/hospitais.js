@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       Hospitais.hasOne(models.Consultas, {
         foreignKey: "hospitalId",
       });
+      Hospitais.hasOne(models.AcompCirurgicos, {
+        foreignKey: "hospitalId",
+      });
     }
   }
   Hospitais.init(

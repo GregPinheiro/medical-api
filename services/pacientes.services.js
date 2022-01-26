@@ -64,7 +64,35 @@ const PacientesServices = {
     let data = {};
 
     try {
-      const response = await Pacientes.findAll();
+      const response = await Pacientes.findAll({
+        include: [
+          {
+            model: Medicos,
+            as: "medico",
+            attributes: ["id", "nome", "especialidade", "CRO_CRM"],
+            include: [
+              {
+                as: "hospitais",
+                model: Hospitais,
+                through: { model: MedicoHospitais },
+                attributes: ["id", "nome", "unidade", "CNPJ"],
+              },
+            ],
+          },
+          {
+            model: Convenios,
+            as: "convenio",
+            attributes: ["id", "nome", "plano", "acomodacao"],
+            include: [
+              {
+                as: "hospitais",
+                model: Hospitais,
+                attributes: ["id", "nome", "unidade", "CNPJ"],
+              },
+            ],
+          },
+        ],
+      });
 
       status = response ? 200 : 204;
       data = response ? response : "Itens nao encontrados";

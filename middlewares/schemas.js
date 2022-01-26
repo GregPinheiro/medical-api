@@ -133,6 +133,18 @@ const consultasSchema = Joi.object().keys({
   status: Joi.string().allow(null, ""),
 });
 
+const acompCirurgicos = Joi.object().keys({
+  pacienteId: Joi.number().required(),
+  convenioId: Joi.number().required(),
+  cirurgiaId: Joi.number().required(),
+  hospitalId: Joi.number().required(),
+  dataPrevista: Joi.date().allow(null),
+  reserva: Joi.number().allow(null),
+  dataAprovacao: Joi.date().allow(null),
+  dataCirurgia: Joi.date().allow(null),
+  status: Joi.string().allow(null, ""),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
@@ -146,4 +158,5 @@ module.exports = {
   medicoHospitais,
   convenioHospitais,
   consultasSchema,
+  acompCirurgicos,
 };

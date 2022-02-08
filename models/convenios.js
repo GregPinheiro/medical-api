@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       Convenios.hasOne(models.AcompCirurgicos, {
         foreignKey: "convenioId",
       });
+      Convenios.hasOne(models.Reembolsos, {
+        foreignKey: "convenioId",
+      });
     }
   }
   Convenios.init(

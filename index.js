@@ -11,6 +11,8 @@ const pacientesRoutes = require("./routes/pacientes.routes");
 const hospitaisRoutes = require("./routes/hospitais.routes");
 const consultasRoutes = require("./routes/consultas.routes");
 const acompCirurgicosRoutes = require("./routes/acompCirurgicos.routes");
+const reembolsosRoutes = require("./routes/reembolsos.routes");
+const reembolsoStatusRoutes = require("./routes/reembolsoStatus.route");
 
 const app = express();
 
@@ -48,6 +50,8 @@ app.use("/api/v1/pacientes", pacientesRoutes);
 app.use("/api/v1/hospitais", hospitaisRoutes);
 app.use("/api/v1/consultas", consultasRoutes);
 app.use("/api/v1/acom-cirurgicos", acompCirurgicosRoutes);
+app.use("/api/v1/reembolsos", reembolsosRoutes);
+app.use("/api/v1/reembolso-status", reembolsoStatusRoutes);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running on port ${process.env.PORT}`)

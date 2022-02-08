@@ -145,6 +145,22 @@ const acompCirurgicos = Joi.object().keys({
   status: Joi.string().allow(null, ""),
 });
 
+const reembolsos = Joi.object().keys({
+  pacienteId: Joi.number().required(),
+  procedimentoId: Joi.number().required(),
+  medicoId: Joi.number().required(),
+  hospitalId: Joi.number().required(),
+  convenioId: Joi.number().required(),
+  fornecedorId: Joi.number().required(),
+  dataPedido: Joi.date().allow(null),
+  dataCirurgia: Joi.date().allow(null),
+  valor: Joi.number().allow(null),
+  nf: Joi.number().allow(null),
+  dataRecebimento: Joi.date().allow(null),
+  statusId: Joi.number().allow(null),
+  status: Joi.string().allow(null, ""),
+});
+
 module.exports = {
   signinSchema,
   postUserSchema,
@@ -159,4 +175,5 @@ module.exports = {
   convenioHospitais,
   consultasSchema,
   acompCirurgicos,
+  reembolsos,
 };
